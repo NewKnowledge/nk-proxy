@@ -17,7 +17,8 @@ class NKProxy:
     def https_proxy(self):
         return self._https_proxy
 
-    def proxy_dict(self):
+    @property
+    def as_dict(self):
         return {'http': self.http_proxy.url,
                 'https': self.https_proxy.url}
 
@@ -26,10 +27,9 @@ def get_proxy():
     return NKProxy()
 
 
-def test_proxy(proxy: PROXY):
+def test_proxy():
     try:
-        protocol = 'https' if proxy.ssl else 'http'
-        response = requests.get('{}://www.google.com'.format(protocol), proxies={'{}: {}'.format(protocol, proxy.url)}, verify=False)
+        response = requests.get('https://www.google.com'.format(protocol), proxies=get_proxy().as_dict, verify=False)
 
         if response.status_code == 200:
             return True
