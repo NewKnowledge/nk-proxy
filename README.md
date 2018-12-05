@@ -1,4 +1,4 @@
-# nk-logger
+# nk-proxy
 A simple proxy wrapper for internal proxy service.  Supports both https and https endpoints.  Currently https endpoint operates under ssl-insecure until self-signed certificates are installed.
 
 # Basic Usage
