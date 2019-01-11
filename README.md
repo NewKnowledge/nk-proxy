@@ -11,7 +11,7 @@ import requests
 from nk_proxy import get_proxy
 proxy = get_proxy()
 
-response = requests.get('http/https://www.website.com', proxies=proxy.proxy_dict(), verify=False)
+response = requests.get('http/https://www.website.com', proxies=proxy.as_dict, verify=False)
 
 assert response.status_code == 200
 ```
